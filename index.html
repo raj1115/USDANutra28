@@ -598,7 +598,8 @@
     </div>
 
     <script>
-        const API_URL = 'https://usdanutra28.onrender.com/api';
+        // UPDATED: Use relative URLs since HTML is served from same domain
+        const API_URL = '/api';
         let isConnected = false;
         let adjustedNutrients = new Set();
 
@@ -654,7 +655,7 @@
 
         async function generateRecommendations() {
             if (!isConnected) {
-                alert('❌ ML Server is not connected! Please start the Flask backend first.');
+                alert('❌ ML Server is not connected! Please wait while server wakes up...');
                 return;
             }
 
@@ -1031,32 +1032,4 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
-        document.addEventListener('keydown', function(e) {
-            if ((e.key === 'g' || e.key === 'G') && !e.ctrlKey && !e.metaKey) {
-                const button = document.getElementById('generateBtn');
-                if (button && !button.disabled) {
-                    button.click();
-                }
-            }
-            
-            if ((e.key === 'r' || e.key === 'R') && !e.ctrlKey && !e.metaKey) {
-                if (confirm('Reset all preferences to default?')) {
-                    location.reload();
-                }
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🍽️ Advanced Food Recommendation System Initialized');
-            console.log('🔗 Connecting to Flask ML Backend...');
-            
-            checkConnection();
-            setInterval(checkConnection, 30000);
-        });
-
-        console.log('✅ Frontend loaded - 23 nutrients ready');
-        console.log('💡 Press G to generate, R to reset');
-    </script>
-</body>
-
-</html>
+        document.addEventListener('
