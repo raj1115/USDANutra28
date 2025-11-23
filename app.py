@@ -1,8 +1,9 @@
 # ============================================================================
 # MEMORY-OPTIMIZED FLASK BACKEND - 25+ NUTRIENTS FOR RENDER FREE TIER
+# NOW SERVES HTML FRONTEND
 # ============================================================================
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import pandas as pd
 import numpy as np
@@ -108,16 +109,35 @@ print("✅ SERVER READY")
 print("="*80)
 
 # ============================================================================
-# API ENDPOINTS
+# SERVE HTML FRONTEND
 # ============================================================================
 
 @app.route('/')
-def home():
+def serve_frontend():
+    """Serve the HTML frontend"""
+    try:
+        return send_from_directory('.', 'index.html')
+    except Exception as e:
+        return jsonify({
+            'error': 'Frontend not found',
+            'message': 'Please upload index.html to the same directory as app.py',
+            'backend_status': 'online',
+            'api_available': True
+        }), 404
+
+# ============================================================================
+# API ENDPOINTS
+# ============================================================================
+
+@app.route('/api/status', methods=['GET'])
+def api_status():
+    """API status check"""
     return jsonify({
         'status': 'online',
         'message': 'Food Recommendation ML API',
         'nutrients': len(available_nutrients),
-        'foods': len(df)
+        'foods': len(df),
+        'frontend_available': os.path.exists('index.html')
     })
 
 @app.route('/api/stats', methods=['GET'])
