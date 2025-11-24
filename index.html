@@ -598,7 +598,7 @@
     </div>
 
     <script>
-        // UPDATED: Use relative URLs since HTML is served from same domain
+        // CRITICAL FIX: Use relative path since HTML is served from same Flask server
         const API_URL = '/api';
         let isConnected = false;
         let adjustedNutrients = new Set();
@@ -632,6 +632,7 @@
                 
                 loadModelMetrics();
             } catch (error) {
+                console.error('Connection error:', error);
                 isConnected = false;
                 document.getElementById('connectionStatus').textContent = '🔴 ML Server Offline';
                 document.getElementById('connectionStatus').className = 'connection-status disconnected';
@@ -673,14 +674,26 @@
                     fiber: parseFloat(document.getElementById('fiber').value),
                     sugar: parseFloat(document.getElementById('sugar').value),
                     calories: parseFloat(document.getElementById('calories').value),
+                    satfat: parseFloat(document.getElementById('satfat').value),
+                    monofat: parseFloat(document.getElementById('monofat').value),
+                    polyfat: parseFloat(document.getElementById('polyfat').value),
+                    cholesterol: parseFloat(document.getElementById('cholesterol').value),
                     calcium: parseFloat(document.getElementById('calcium').value),
                     iron: parseFloat(document.getElementById('iron').value),
+                    magnesium: parseFloat(document.getElementById('magnesium').value),
                     sodium: parseFloat(document.getElementById('sodium').value),
                     potassium: parseFloat(document.getElementById('potassium').value),
+                    zinc: parseFloat(document.getElementById('zinc').value),
                     vitc: parseFloat(document.getElementById('vitc').value),
                     vita: parseFloat(document.getElementById('vita').value),
+                    vitd: parseFloat(document.getElementById('vitd').value),
+                    vite: parseFloat(document.getElementById('vite').value),
+                    vitk: parseFloat(document.getElementById('vitk').value),
+                    vitb12: parseFloat(document.getElementById('vitb12').value),
+                    folate: parseFloat(document.getElementById('folate').value),
                     numRecommendations: parseInt(document.getElementById('numRecommendations').value),
                     diversityMode: document.getElementById('diversityMode').checked,
+                    weightingMode: document.getElementById('weightingMode').value,
                     excludeKeywords: document.getElementById('excludeKeywords').value.split(',').map(k => k.trim()).filter(k => k.length > 0)
                 };
 
@@ -885,7 +898,55 @@
                         <div>
                             <h4 class="font-bold text-lg text-purple-600">Features</h4>
                             <ul class="text-sm text-gray-600 mt-2 space-y-1 list-disc list-inside">
-                                <li>23 nutrients across 4 categories</li>
+                                <li>• K-Means outperforms Agglomerative clustering</li>
+                                <li>• 8 clusters provide optimal balance</li>
+                                <li>• Cosine similarity effective for nutrient matching</li>
+                                <li>• Multi-nutrient approach beats single-nutrient methods</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button onclick="this.closest('.fixed').remove()" class="mt-6 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
+                        Close
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.key === 'g' || e.key === 'G') && !e.ctrlKey && !e.metaKey) {
+                const button = document.getElementById('generateBtn');
+                if (button && !button.disabled) {
+                    button.click();
+                }
+            }
+            
+            if ((e.key === 'r' || e.key === 'R') && !e.ctrlKey && !e.metaKey) {
+                if (confirm('Reset all preferences to default?')) {
+                    location.reload();
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🍽️ Advanced Food Recommendation System Initialized');
+            console.log('🔗 API URL:', API_URL);
+            
+            checkConnection();
+            setInterval(checkConnection, 30000);
+        });
+
+        console.log('✅ Frontend loaded - 23 nutrients ready');
+        console.log('💡 Press G to generate, R to reset');
+        console.log('🌐 API Endpoint:', API_URL);
+    </script>
+</body>
+</html>>23 nutrients across 4 categories</li>
                                 <li>3 weighting strategies for personalization</li>
                                 <li>Advanced metrics: Precision@K, NDCG, Diversity</li>
                                 <li>Real-time cluster analysis</li>
@@ -993,7 +1054,7 @@
                             <h4 class="font-bold text-lg">🎯 Clustering Quality</h4>
                             <ul class="text-sm text-gray-600 mt-2 space-y-1">
                                 <li>• Algorithm: K-Means (k=8)</li>
-                                <li>• Silhouette Score: ~0.28 (Good separation)</li>
+                                <li>• Silhouette Score: ~0.27 (Good separation)</li>
                                 <li>• Davies-Bouldin: Lower is better</li>
                                 <li>• Calinski-Harabasz: High density score</li>
                             </ul>
@@ -1012,24 +1073,4 @@
                         <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
                             <p class="font-semibold text-blue-800">📈 Key Findings</p>
                             <ul class="text-sm text-blue-700 mt-2 space-y-1">
-                                <li>• K-Means outperforms Agglomerative clustering</li>
-                                <li>• 8 clusters provide optimal balance</li>
-                                <li>• Cosine similarity effective for nutrient matching</li>
-                                <li>• Multi-nutrient approach beats single-nutrient methods</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <button onclick="this.closest('.fixed').remove()" class="mt-6 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
-                        Close
-                    </button>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        document.addEventListener('
+                                <li
