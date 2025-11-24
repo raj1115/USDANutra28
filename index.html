@@ -991,55 +991,66 @@
             modal.onclick = function(e) {
                 if (e.target === modal) modal.remove();
             };
-            modal.innerHTML = `
-                <div class="bg-white rounded-lg p-8 max-w-3xl max-h-[80vh] overflow-y-auto">
-                    <h3 class="text-2xl font-bold mb-4">📊 Baseline Comparison</h3>
-                    <p class="text-gray-600 mb-4">K-Means + Cosine Similarity vs Traditional Methods</p>
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="border-b-2 border-gray-300">
-                                <th class="py-3 px-2">Model</th>
-                                <th class="py-3 px-2">Avg Similarity</th>
-                                <th class="py-3 px-2">NDCG</th>
-                                <th class="py-3 px-2">Precision@10</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b bg-purple-50">
-                                <td class="py-3 px-2 font-bold text-purple-600">Our Model (23 Nutrients)</td>
-                                <td class="py-3 px-2 font-bold">0.847</td>
-                                <td class="py-3 px-2 font-bold">0.892</td>
-                                <td class="py-3 px-2 font-bold">75.6%</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="py-3 px-2">Random Baseline</td>
-                                <td class="py-3 px-2 text-gray-600">0.324</td>
-                                <td class="py-3 px-2 text-gray-600">0.412</td>
-                                <td class="py-3 px-2 text-gray-600">28.9%</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="py-3 px-2">Popularity Baseline</td>
-                                <td class="py-3 px-2 text-gray-600">0.567</td>
-                                <td class="py-3 px-2 text-gray-600">0.623</td>
-                                <td class="py-3 px-2 text-gray-600">44.5%</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-2">Single-Nutrient (Protein)</td>
-                                <td class="py-3 px-2 text-gray-600">0.489</td>
-                                <td class="py-3 px-2 text-gray-600">0.534</td>
-                                <td class="py-3 px-2 text-gray-600">37.8%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="mt-6 bg-green-50 border-l-4 border-green-500 p-4">
-                        <p class="text-green-800 font-semibold">✅ 49-161% improvement over baselines!</p>
-                        <p class="text-sm text-green-700 mt-1">Multi-nutrient clustering significantly outperforms traditional methods.</p>
-                    </div>
-                    <button onclick="this.closest('.fixed').remove()" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
-                        Close
-                    </button>
+            
+            const modalContent = document.createElement('div');
+            modalContent.className = 'bg-white rounded-lg p-8 max-w-3xl max-h-[80vh] overflow-y-auto';
+            modalContent.onclick = function(e) {
+                e.stopPropagation();
+            };
+            
+            modalContent.innerHTML = `
+                <h3 class="text-2xl font-bold mb-4">📊 Baseline Comparison</h3>
+                <p class="text-gray-600 mb-4">K-Means + Cosine Similarity vs Traditional Methods</p>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b-2 border-gray-300">
+                            <th class="py-3 px-2">Model</th>
+                            <th class="py-3 px-2">Avg Similarity</th>
+                            <th class="py-3 px-2">NDCG</th>
+                            <th class="py-3 px-2">Precision@10</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b bg-purple-50">
+                            <td class="py-3 px-2 font-bold text-purple-600">Our Model (23 Nutrients)</td>
+                            <td class="py-3 px-2 font-bold">0.847</td>
+                            <td class="py-3 px-2 font-bold">0.892</td>
+                            <td class="py-3 px-2 font-bold">75.6%</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-2">Random Baseline</td>
+                            <td class="py-3 px-2 text-gray-600">0.324</td>
+                            <td class="py-3 px-2 text-gray-600">0.412</td>
+                            <td class="py-3 px-2 text-gray-600">28.9%</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-2">Popularity Baseline</td>
+                            <td class="py-3 px-2 text-gray-600">0.567</td>
+                            <td class="py-3 px-2 text-gray-600">0.623</td>
+                            <td class="py-3 px-2 text-gray-600">44.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-2">Single-Nutrient (Protein)</td>
+                            <td class="py-3 px-2 text-gray-600">0.489</td>
+                            <td class="py-3 px-2 text-gray-600">0.534</td>
+                            <td class="py-3 px-2 text-gray-600">37.8%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="mt-6 bg-green-50 border-l-4 border-green-500 p-4">
+                    <p class="text-green-800 font-semibold">✅ 49-161% improvement over baselines!</p>
+                    <p class="text-sm text-green-700 mt-1">Multi-nutrient clustering significantly outperforms traditional methods.</p>
                 </div>
+                <button class="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
+                    Close
+                </button>
             `;
+            
+            modalContent.querySelector('button').onclick = function() {
+                modal.remove();
+            };
+            
+            modal.appendChild(modalContent);
             document.body.appendChild(modal);
         }
 
