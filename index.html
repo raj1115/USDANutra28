@@ -72,8 +72,6 @@
             height: 100%;
             overflow: auto;
             background-color: rgba(0,0,0,0.5);
-            align-items: center;
-            justify-content: center;
         }
         .modal-content {
             background-color: white;
@@ -508,595 +506,610 @@
                     <div id="metricsDisplay" class="hidden mt-6 pt-6 border-t border-gray-200">
                         <h3 class="font-bold text-gray-800 mb-3">📊 Quality Metrics</h3>
                         <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Avg Similarity:</span>
-                                <span id="avgSimilarity" class="font-bold text-purple-600">-</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Precision@K:</span>
-                                <span id="precisionK" class="font-bold text-purple-600">-</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">NDCG:</span>
-                                <span id="ndcgScore" class="font-bold text-purple-600">-</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Diversity:</span>
-                                <span id="diversityScore" class="font-bold text-purple-600">-</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Matched Cluster:</span>
-                                <span id="matchedCluster" class="font-bold text-purple-600">-</span>
-                            </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Avg Similarity:</span>
+                            <span id="avgSimilarity" class="font-bold text-purple-600">-</span>
                         </div>
-                        
-                        <button onclick="showClusterInfo()" class="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm">
-                            📊 View Cluster Analysis
-                        </button>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Precision@K:</span>
+                            <span id="precisionK" class="font-bold text-purple-600">-</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">NDCG:</span>
+                            <span id="ndcgScore" class="font-bold text-purple-600">-</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Diversity:</span>
+                            <span id="diversityScore" class="font-bold text-purple-600">-</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Matched Cluster:</span>
+                            <span id="matchedCluster" class="font-bold text-purple-600">-</span>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Model Performance Section -->
-        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6">📊 Real-Time ML Model Performance</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="border-l-4 border-blue-500 pl-4">
-                    <p class="text-sm text-gray-600">Silhouette Score</p>
-                    <p class="text-3xl font-bold text-gray-800" id="silhouetteScore">Loading...</p>
-                    <p class="text-sm text-green-600 mt-1">Cluster separation</p>
-                </div>
-                <div class="border-l-4 border-green-500 pl-4">
-                    <p class="text-sm text-gray-600">Davies-Bouldin Index</p>
-                    <p class="text-3xl font-bold text-gray-800" id="dbIndex">Loading...</p>
-                    <p class="text-sm text-green-600 mt-1">Lower is better</p>
-                </div>
-                <div class="border-l-4 border-purple-500 pl-4">
-                    <p class="text-sm text-gray-600">Calinski-Harabasz</p>
-                    <p class="text-3xl font-bold text-gray-800" id="chScore">Loading...</p>
-                    <p class="text-sm text-green-600 mt-1">High density</p>
-                </div>
-                <div class="border-l-4 border-red-500 pl-4">
-                    <p class="text-sm text-gray-600">Inertia (WCSS)</p>
-                    <p class="text-3xl font-bold text-gray-800" id="inertiaScore">Loading...</p>
-                    <p class="text-sm text-green-600 mt-1">Compactness</p>
+                    
+                    <button onclick="showClusterInfo()" class="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm">
+                        📊 View Cluster Analysis
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-12 py-6">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-lg font-semibold">Advanced Food Recommendation System</p>
-            <p class="text-gray-400 mt-2">Powered by K-Means Clustering with 23 Nutrients | Real ML Backend</p>
-            <p class="text-gray-500 mt-2 text-sm">© 2025 - Thesis Project | Flask + Python + scikit-learn</p>
-        </div>
-    </footer>
-
-    <!-- Floating Action Buttons -->
-    <div class="fixed bottom-8 right-8 flex flex-col gap-3 z-50">
-        <button onclick="showHelp()" class="bg-blue-500 hover:bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition duration-200" title="Help">
-            <span class="text-2xl">❓</span>
-        </button>
-        <button onclick="compareWithBaseline()" class="bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition duration-200" title="Compare Models">
-            <span class="text-2xl">📊</span>
-        </button>
-        <button onclick="showDatasetAnalysis()" class="bg-yellow-500 hover:bg-yellow-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition duration-200" title="Dataset Analysis">
-            <span class="text-2xl">🔬</span>
-        </button>
-        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-purple-500 hover:bg-purple-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition duration-200" title="Back to Top">
-            <span class="text-2xl">↑</span>
-        </button>
-    </div>
-
-    <!-- Modals -->
-    <div id="clusterModal" class="modal">
-        <div class="modal-content">
-            <h2 class="text-2xl font-bold mb-4">🎯 Cluster Analysis</h2>
-            <div id="clusterModalContent"></div>
-            <button onclick="closeModal('clusterModal')" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">Close</button>
+    <!-- Model Performance Section -->
+    <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">📊 Real-Time ML Model Performance</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="border-l-4 border-blue-500 pl-4">
+                <p class="text-sm text-gray-600">Silhouette Score</p>
+                <p class="text-3xl font-bold text-gray-800" id="silhouetteScore">Loading...</p>
+                <p class="text-sm text-green-600 mt-1">Cluster separation</p>
+            </div>
+            <div class="border-l-4 border-green-500 pl-4">
+                <p class="text-sm text-gray-600">Davies-Bouldin Index</p>
+                <p class="text-3xl font-bold text-gray-800" id="dbIndex">Loading...</p>
+                <p class="text-sm text-green-600 mt-1">Lower is better</p>
+            </div>
+            <div class="border-l-4 border-purple-500 pl-4">
+                <p class="text-sm text-gray-600">Calinski-Harabasz</p>
+                <p class="text-3xl font-bold text-gray-800" id="chScore">Loading...</p>
+                <p class="text-sm text-green-600 mt-1">High density</p>
+            </div>
+            <div class="border-l-4 border-red-500 pl-4">
+                <p class="text-sm text-gray-600">Inertia (WCSS)</p>
+                <p class="text-3xl font-bold text-gray-800" id="inertiaScore">Loading...</p>
+                <p class="text-sm text-green-600 mt-1">Compactness</p>
+            </div>
         </div>
     </div>
+</div>
 
-    <script>
-        // CRITICAL FIX: Use relative path since HTML is served from same Flask server
-        const API_URL = '/api';
-        let isConnected = false;
-        let adjustedNutrients = new Set();
+<!-- Footer -->
+<footer class="bg-gray-800 text-white mt-12 py-6">
+    <div class="container mx-auto px-6 text-center">
+        <p class="text-lg font-semibold">Advanced Food Recommendation System</p>
+        <p class="text-gray-400 mt-2">Powered by K-Means Clustering with 23 Nutrients | Real ML Backend</p>
+        <p class="text-gray-500 mt-2 text-sm">© 2025 - Thesis Project | Flask + Python + scikit-learn</p>
+    </div>
+</footer>
 
-        // Track which nutrients have been adjusted
-        const allNutrientIds = ['protein', 'carbs', 'fat', 'fiber', 'sugar', 'calories',
-            'satfat', 'monofat', 'polyfat', 'cholesterol',
-            'calcium', 'iron', 'magnesium', 'sodium', 'potassium', 'zinc',
-            'vitc', 'vita', 'vitd', 'vite', 'vitk', 'vitb12', 'folate'];
+<!-- Floating Action Buttons -->
+<div class="fixed bottom-8 right-8 flex flex-col gap-3 z-50">
+    <button onclick="showHelp()" class="bg-blue-500 hover:bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition duration-200" title="Help">
+        <span class="text-2xl">❓</span>
+    </button>
+    <button onclick="compareWithBaseline()" class="bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition duration-200" title="Compare Models">
+        <span class="text-2xl">📊</span>
+    </button>
+    <button onclick="showDatasetAnalysis()" class="bg-yellow-500 hover:bg-yellow-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition duration-200" title="Dataset Analysis">
+        <span class="text-2xl">🔬</span>
+    </button>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-purple-500 hover:bg-purple-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition duration-200" title="Back to Top">
+        <span class="text-2xl">↑</span>
+    </button>
+</div>
 
-        allNutrientIds.forEach(id => {
-            const slider = document.getElementById(id);
-            if (slider) {
-                slider.addEventListener('input', () => adjustedNutrients.add(id));
-            }
-        });
+<!-- Modals -->
+<div id="clusterModal" class="modal">
+    <div class="modal-content">
+        <h2 class="text-2xl font-bold mb-4">🎯 Cluster Analysis</h2>
+        <div id="clusterModalContent"></div>
+        <button onclick="closeModal('clusterModal')" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">Close</button>
+    </div>
+</div>
 
-        async function checkConnection() {
-            try {
-                const response = await fetch(`${API_URL}/stats`);
-                const data = await response.json();
-                
-                isConnected = true;
-                document.getElementById('connectionStatus').textContent = '🟢 Connected to ML Server';
-                document.getElementById('connectionStatus').className = 'connection-status connected';
-                
-                document.getElementById('totalFoods').textContent = data.total_foods.toLocaleString();
-                document.getElementById('headerFoodCount').textContent = data.total_foods.toLocaleString() + ' Foods';
-                document.getElementById('totalNutrients').textContent = data.total_nutrients;
-                document.getElementById('totalClusters').textContent = data.total_clusters;
-                
-                loadModelMetrics();
-            } catch (error) {
-                console.error('Connection error:', error);
-                isConnected = false;
-                document.getElementById('connectionStatus').textContent = '🔴 ML Server Offline';
-                document.getElementById('connectionStatus').className = 'connection-status disconnected';
-            }
+<script>
+    // CRITICAL FIX: Use relative path since HTML is served from same Flask server
+    const API_URL = '/api';
+    let isConnected = false;
+    let adjustedNutrients = new Set();
+
+    // Track which nutrients have been adjusted
+    const allNutrientIds = ['protein', 'carbs', 'fat', 'fiber', 'sugar', 'calories',
+        'satfat', 'monofat', 'polyfat', 'cholesterol',
+        'calcium', 'iron', 'magnesium', 'sodium', 'potassium', 'zinc',
+        'vitc', 'vita', 'vitd', 'vite', 'vitk', 'vitb12', 'folate'];
+
+    allNutrientIds.forEach(id => {
+        const slider = document.getElementById(id);
+        if (slider) {
+            slider.addEventListener('input', () => adjustedNutrients.add(id));
         }
+    });
 
-        async function loadModelMetrics() {
-            try {
-                const response = await fetch(`${API_URL}/metrics`);
-                const data = await response.json();
-                
-                document.getElementById('silhouetteScore').textContent = data.silhouette_score.toFixed(4);
-                document.getElementById('accuracy').textContent = data.silhouette_score.toFixed(4);
-                document.getElementById('dbIndex').textContent = data.davies_bouldin_index.toFixed(4);
-                document.getElementById('chScore').textContent = data.calinski_harabasz_score.toFixed(2);
-                document.getElementById('inertiaScore').textContent = data.inertia.toFixed(2);
-            } catch (error) {
-                console.error('Error loading metrics:', error);
-            }
-        }
-
-        async function generateRecommendations() {
-            if (!isConnected) {
-                alert('❌ ML Server is not connected! Please wait while server wakes up...');
-                return;
-            }
-
-            const button = document.getElementById('generateBtn');
-            const originalText = button.innerHTML;
+    async function checkConnection() {
+        try {
+            const response = await fetch(`${API_URL}/stats`);
+            const data = await response.json();
             
-            button.innerHTML = '<span class="loading inline-block">⏳</span> Running ML Algorithm...';
-            button.disabled = true;
+            isConnected = true;
+            document.getElementById('connectionStatus').textContent = '🟢 Connected to ML Server';
+            document.getElementById('connectionStatus').className = 'connection-status connected';
+            
+            document.getElementById('totalFoods').textContent = data.total_foods.toLocaleString();
+            document.getElementById('headerFoodCount').textContent = data.total_foods.toLocaleString() + ' Foods';
+            document.getElementById('totalNutrients').textContent = data.total_nutrients;
+            document.getElementById('totalClusters').textContent = data.total_clusters;
+            
+            loadModelMetrics();
+        } catch (error) {
+            console.error('Connection error:', error);
+            isConnected = false;
+            document.getElementById('connectionStatus').textContent = '🔴 ML Server Offline';
+            document.getElementById('connectionStatus').className = 'connection-status disconnected';
+        }
+    }
 
-            try {
-                const preferences = {
-                    protein: parseFloat(document.getElementById('protein').value),
-                    carbs: parseFloat(document.getElementById('carbs').value),
-                    fat: parseFloat(document.getElementById('fat').value),
-                    fiber: parseFloat(document.getElementById('fiber').value),
-                    sugar: parseFloat(document.getElementById('sugar').value),
-                    calories: parseFloat(document.getElementById('calories').value),
-                    satfat: parseFloat(document.getElementById('satfat').value),
-                    monofat: parseFloat(document.getElementById('monofat').value),
-                    polyfat: parseFloat(document.getElementById('polyfat').value),
-                    cholesterol: parseFloat(document.getElementById('cholesterol').value),
-                    calcium: parseFloat(document.getElementById('calcium').value),
-                    iron: parseFloat(document.getElementById('iron').value),
-                    magnesium: parseFloat(document.getElementById('magnesium').value),
-                    sodium: parseFloat(document.getElementById('sodium').value),
-                    potassium: parseFloat(document.getElementById('potassium').value),
-                    zinc: parseFloat(document.getElementById('zinc').value),
-                    vitc: parseFloat(document.getElementById('vitc').value),
-                    vita: parseFloat(document.getElementById('vita').value),
-                    vitd: parseFloat(document.getElementById('vitd').value),
-                    vite: parseFloat(document.getElementById('vite').value),
-                    vitk: parseFloat(document.getElementById('vitk').value),
-                    vitb12: parseFloat(document.getElementById('vitb12').value),
-                    folate: parseFloat(document.getElementById('folate').value),
-                    numRecommendations: parseInt(document.getElementById('numRecommendations').value),
-                    diversityMode: document.getElementById('diversityMode').checked,
-                    weightingMode: document.getElementById('weightingMode').value,
-                    excludeKeywords: document.getElementById('excludeKeywords').value.split(',').map(k => k.trim()).filter(k => k.length > 0)
-                };
+    async function loadModelMetrics() {
+        try {
+            const response = await fetch(`${API_URL}/metrics`);
+            const data = await response.json();
+            
+            document.getElementById('silhouetteScore').textContent = data.silhouette_score.toFixed(4);
+            document.getElementById('accuracy').textContent = data.silhouette_score.toFixed(4);
+            document.getElementById('dbIndex').textContent = data.davies_bouldin_index.toFixed(4);
+            document.getElementById('chScore').textContent = data.calinski_harabasz_score.toFixed(2);
+            document.getElementById('inertiaScore').textContent = data.inertia.toFixed(2);
+        } catch (error) {
+            console.error('Error loading metrics:', error);
+        }
+    }
 
-                const response = await fetch(`${API_URL}/recommend`, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(preferences)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Server error: ${response.status}`);
-                }
-
-                const data = await response.json();
-                
-                if (!data.success) {
-                    throw new Error(data.error || 'Unknown error');
-                }
-
-                displayRecommendations(data.recommendations, data.metrics);
-                button.innerHTML = originalText;
-                button.disabled = false;
-
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error: ' + error.message);
-                button.innerHTML = originalText;
-                button.disabled = false;
-            }
+    async function generateRecommendations() {
+        if (!isConnected) {
+            alert('❌ ML Server is not connected! Please wait while server wakes up...');
+            return;
         }
 
-        function displayRecommendations(recommendations, metrics) {
-            const container = document.getElementById('recommendations');
-            const showDetails = document.getElementById('showDetails').checked;
+        const button = document.getElementById('generateBtn');
+        const originalText = button.innerHTML;
+        
+        button.innerHTML = '<span class="loading inline-block">⏳</span> Running ML Algorithm...';
+        button.disabled = true;
+
+        try {
+            const preferences = {
+                protein: parseFloat(document.getElementById('protein').value),
+                carbs: parseFloat(document.getElementById('carbs').value),
+                fat: parseFloat(document.getElementById('fat').value),
+                fiber: parseFloat(document.getElementById('fiber').value),
+                sugar: parseFloat(document.getElementById('sugar').value),
+                calories: parseFloat(document.getElementById('calories').value),
+                satfat: parseFloat(document.getElementById('satfat').value),
+                monofat: parseFloat(document.getElementById('monofat').value),
+                polyfat: parseFloat(document.getElementById('polyfat').value),
+                cholesterol: parseFloat(document.getElementById('cholesterol').value),
+                calcium: parseFloat(document.getElementById('calcium').value),
+                iron: parseFloat(document.getElementById('iron').value),
+                magnesium: parseFloat(document.getElementById('magnesium').value),
+                sodium: parseFloat(document.getElementById('sodium').value),
+                potassium: parseFloat(document.getElementById('potassium').value),
+                zinc: parseFloat(document.getElementById('zinc').value),
+                vitc: parseFloat(document.getElementById('vitc').value),
+                vita: parseFloat(document.getElementById('vita').value),
+                vitd: parseFloat(document.getElementById('vitd').value),
+                vite: parseFloat(document.getElementById('vite').value),
+                vitk: parseFloat(document.getElementById('vitk').value),
+                vitb12: parseFloat(document.getElementById('vitb12').value),
+                folate: parseFloat(document.getElementById('folate').value),
+                numRecommendations: parseInt(document.getElementById('numRecommendations').value),
+                diversityMode: document.getElementById('diversityMode').checked,
+                weightingMode: document.getElementById('weightingMode').value,
+                excludeKeywords: document.getElementById('excludeKeywords').value.split(',').map(k => k.trim()).filter(k => k.length > 0)
+            };
+
+            const response = await fetch(`${API_URL}/recommend`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(preferences)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            const data = await response.json();
             
-            container.innerHTML = '';
+            if (!data.success) {
+                throw new Error(data.error || 'Unknown error');
+            }
 
-            recommendations.forEach((food, index) => {
-                const foodCard = document.createElement('div');
-                foodCard.className = 'border-l-4 border-purple-500 bg-gray-50 p-4 rounded-lg card-hover';
-                
-                let detailsHTML = '';
-                if (showDetails) {
-                    detailsHTML = `
-                        <div class="mt-3 grid grid-cols-2 gap-2 text-xs text-gray-600">
-                            <div>🔥 ${food.calories.toFixed(0)} kcal</div>
-                            <div>💪 ${food.protein.toFixed(1)}g protein</div>
-                            <div>🍞 ${food.carbs.toFixed(1)}g carbs</div>
-                            <div>🥑 ${food.fat.toFixed(1)}g fat</div>
-                            <div>🌾 ${food.fiber.toFixed(1)}g fiber</div>
-                            <div>🦴 ${food.calcium.toFixed(0)}mg calcium</div>
-                        </div>
-                    `;
-                }
+            displayRecommendations(data.recommendations, data.metrics);
+            button.innerHTML = originalText;
+            button.disabled = false;
 
-                foodCard.innerHTML = `
-                    <div class="flex items-start justify-between">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl font-bold text-purple-600">${index + 1}</span>
-                                <h3 class="font-semibold text-gray-800 text-sm">${food.name}</h3>
-                                <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">C${food.cluster}</span>
-                            </div>
-                            <div class="mt-2 flex items-center gap-2">
-                                <span class="text-xs text-gray-500">Match:</span>
-                                <div class="flex-1 bg-gray-200 rounded-full h-2 max-w-[120px]">
-                                    <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style="width: ${(food.similarity * 100).toFixed(1)}%"></div>
-                                </div>
-                                <span class="text-xs font-bold text-purple-600">${(food.similarity * 100).toFixed(1)}%</span>
-                            </div>
-                            ${detailsHTML}
-                        </div>
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error: ' + error.message);
+            button.innerHTML = originalText;
+            button.disabled = false;
+        }
+    }
+
+    function displayRecommendations(recommendations, metrics) {
+        const container = document.getElementById('recommendations');
+        const showDetails = document.getElementById('showDetails').checked;
+        
+        container.innerHTML = '';
+
+        recommendations.forEach((food, index) => {
+            const foodCard = document.createElement('div');
+            foodCard.className = 'border-l-4 border-purple-500 bg-gray-50 p-4 rounded-lg card-hover';
+            
+            let detailsHTML = '';
+            if (showDetails) {
+                detailsHTML = `
+                    <div class="mt-3 grid grid-cols-2 gap-2 text-xs text-gray-600">
+                        <div>🔥 ${food.calories.toFixed(0)} kcal</div>
+                        <div>💪 ${food.protein.toFixed(1)}g protein</div>
+                        <div>🍞 ${food.carbs.toFixed(1)}g carbs</div>
+                        <div>🥑 ${food.fat.toFixed(1)}g fat</div>
+                        <div>🌾 ${food.fiber.toFixed(1)}g fiber</div>
+                        <div>🦴 ${food.calcium.toFixed(0)}mg calcium</div>
                     </div>
                 `;
-                
-                container.appendChild(foodCard);
-            });
-
-            // Calculate NDCG
-            const similarities = recommendations.map(r => r.similarity);
-            const dcg = similarities.reduce((sum, sim, i) => sum + sim / Math.log2(i + 2), 0);
-            const sortedSim = [...similarities].sort((a, b) => b - a);
-            const idcg = sortedSim.reduce((sum, sim, i) => sum + sim / Math.log2(i + 2), 0);
-            const ndcg = idcg > 0 ? dcg / idcg : 0;
-
-            document.getElementById('metricsDisplay').classList.remove('hidden');
-            document.getElementById('avgSimilarity').textContent = (metrics.avg_similarity * 100).toFixed(1) + '%';
-            document.getElementById('precisionK').textContent = (metrics.precision_at_k * 100).toFixed(1) + '%';
-            document.getElementById('ndcgScore').textContent = ndcg.toFixed(3);
-            document.getElementById('diversityScore').textContent = metrics.diversity + ' clusters';
-            document.getElementById('matchedCluster').textContent = 'Cluster ' + metrics.matched_cluster;
-
-            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            document.getElementById(tabName).classList.remove('hidden');
-            event.target.classList.add('active');
-        }
-
-        function updateSliderValue(slider, nutrient) {
-            const units = {
-                protein: 'g', carbs: 'g', fat: 'g', fiber: 'g', sugar: 'g', calories: '',
-                satfat: 'g', monofat: 'g', polyfat: 'g', cholesterol: 'mg',
-                calcium: 'mg', iron: 'mg', magnesium: 'mg', sodium: 'mg', potassium: 'mg', zinc: 'mg',
-                vitc: 'mg', vita: '', vitd: 'µg', vite: 'mg', vitk: 'µg', vitb12: 'µg', folate: 'µg'
-            };
-            document.getElementById(nutrient + '-value').textContent = slider.value + units[nutrient];
-        }
-
-        function applyPreset(preset) {
-            const presets = {
-                highProtein: {
-                    protein: 80, carbs: 10, fat: 30, fiber: 30, sugar: 5, calories: 150,
-                    calcium: 200, iron: 5, sodium: 100, potassium: 500, vitc: 10, vita: 100
-                },
-                lowCarb: {
-                    protein: 60, carbs: 5, fat: 60, fiber: 20, sugar: 2, calories: 100,
-                    calcium: 200, iron: 3, sodium: 200, potassium: 400, vitc: 15, vita: 80
-                },
-                highFiber: {
-                    protein: 40, carbs: 70, fat: 20, fiber: 45, sugar: 30, calories: 150,
-                    calcium: 300, iron: 4, sodium: 150, potassium: 800, vitc: 30, vita: 200
-                },
-                lowSodium: {
-                    protein: 30, carbs: 40, fat: 20, fiber: 30, sugar: 15, calories: 120,
-                    calcium: 700, iron: 3, sodium: 50, potassium: 1000, vitc: 25, vita: 150
-                },
-                highCalcium: {
-                    protein: 60, carbs: 30, fat: 30, fiber: 20, sugar: 10, calories: 150,
-                    calcium: 900, iron: 2, sodium: 200, potassium: 500, vitc: 5, vita: 300
-                },
-                lowCalorie: {
-                    protein: 50, carbs: 30, fat: 10, fiber: 40, sugar: 5, calories: 50,
-                    calcium: 200, iron: 2, sodium: 100, potassium: 600, vitc: 40, vita: 150
-                }
-            };
-
-            const values = presets[preset];
-            for (let key in values) {
-                const slider = document.getElementById(key);
-                if (slider) {
-                    slider.value = values[key];
-                    updateSliderValue(slider, key);
-                }
             }
-            
-            const btn = event.target;
-            const originalText = btn.textContent;
-            btn.textContent = '✅ Applied!';
-            setTimeout(() => btn.textContent = originalText, 1500);
-        }
 
-        async function showClusterInfo() {
-            try {
-                const response = await fetch(`${API_URL}/clusters`);
-                const clusters = await response.json();
-                
-                let html = '<div class="space-y-4">';
-                clusters.forEach(cluster => {
-                    const nutrients = Object.entries(cluster.top_nutrients)
-                        .map(([k, v]) => `${k.split('_(')[0]}: ${v.toFixed(1)}`)
-                        .join(', ');
-                    
-                    html += `
-                        <div class="border-l-4 border-purple-500 pl-4 py-2">
-                            <h3 class="font-bold text-lg">Cluster ${cluster.cluster_id} (${cluster.size} foods)</h3>
-                            <p class="text-sm text-gray-600 mt-1">Top nutrients: ${nutrients}</p>
-                            <p class="text-sm text-gray-500 mt-1">Examples: ${cluster.sample_foods.join(', ')}</p>
+            foodCard.innerHTML = `
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl font-bold text-purple-600">${index + 1}</span>
+                            <h3 class="font-semibold text-gray-800 text-sm">${food.name}</h3>
+                            <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">C${food.cluster}</span>
                         </div>
-                    `;
-                });
-                html += '</div>';
-                
-                document.getElementById('clusterModalContent').innerHTML = html;
-                document.getElementById('clusterModal').style.display = 'block';
-            } catch (error) {
-                alert('Error loading cluster info');
-            }
-        }
-
-        function showHelp() {
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4';
-            modal.style.zIndex = '9999';
-            modal.onclick = function(e) {
-                if (e.target === modal) modal.remove();
-            };
-            modal.innerHTML = `
-                <div class="bg-white rounded-lg p-8 max-w-2xl max-h-[80vh] overflow-y-auto">
-                    <h3 class="text-2xl font-bold mb-4">❓ Advanced System Guide</h3>
-                    
-                    <div class="space-y-4">
-                        <div class="bg-green-50 border-l-4 border-green-500 p-4">
-                            <p class="font-semibold text-green-800">✅ 23 Nutrient Analysis</p>
-                            <p class="text-sm text-green-700 mt-1">This system analyzes macronutrients, fats, minerals, and vitamins using K-Means clustering with cosine similarity.</p>
+                        <div class="mt-2 flex items-center gap-2">
+                            <span class="text-xs text-gray-500">Match:</span>
+                            <div class="flex-1 bg-gray-200 rounded-full h-2 max-w-[120px]">
+                                <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style="width: ${(food.similarity * 100).toFixed(1)}%"></div>
+                            </div>
+                            <span class="text-xs font-bold text-purple-600">${(food.similarity * 100).toFixed(1)}%</span>
                         </div>
-                        
-                        <div>
-                            <h4 class="font-bold text-lg text-purple-600">Features</h4>
-                            <ul class="text-sm text-gray-600 mt-2 space-y-1 list-disc list-inside">
-                                <li>• K-Means outperforms Agglomerative clustering</li>
-                                <li>• 8 clusters provide optimal balance</li>
-                                <li>• Cosine similarity effective for nutrient matching</li>
-                                <li>• Multi-nutrient approach beats single-nutrient methods</li>
-                            </ul>
-                        </div>
+                        ${detailsHTML}
                     </div>
-                    
-                    <button onclick="this.closest('.fixed').remove()" class="mt-6 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
-                        Close
-                    </button>
                 </div>
             `;
-            document.body.appendChild(modal);
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if ((e.key === 'g' || e.key === 'G') && !e.ctrlKey && !e.metaKey) {
-                const button = document.getElementById('generateBtn');
-                if (button && !button.disabled) {
-                    button.click();
-                }
-            }
             
-            if ((e.key === 'r' || e.key === 'R') && !e.ctrlKey && !e.metaKey) {
-                if (confirm('Reset all preferences to default?')) {
-                    location.reload();
-                }
-            }
+            container.appendChild(foodCard);
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🍽️ Advanced Food Recommendation System Initialized');
-            console.log('🔗 API URL:', API_URL);
-            
-            checkConnection();
-            setInterval(checkConnection, 30000);
+        // Calculate NDCG
+        const similarities = recommendations.map(r => r.similarity);
+        const dcg = similarities.reduce((sum, sim, i) => sum + sim / Math.log2(i + 2), 0);
+        const sortedSim = [...similarities].sort((a, b) => b - a);
+        const idcg = sortedSim.reduce((sum, sim, i) => sum + sim / Math.log2(i + 2), 0);
+        const ndcg = idcg > 0 ? dcg / idcg : 0;
+
+        document.getElementById('metricsDisplay').classList.remove('hidden');
+        document.getElementById('avgSimilarity').textContent = (metrics.avg_similarity * 100).toFixed(1) + '%';
+        document.getElementById('precisionK').textContent = (metrics.precision_at_k * 100).toFixed(1) + '%';
+        document.getElementById('ndcgScore').textContent = ndcg.toFixed(3);
+        document.getElementById('diversityScore').textContent = metrics.diversity + ' clusters';
+        document.getElementById('matchedCluster').textContent = 'Cluster ' + metrics.matched_cluster;
+
+        container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function switchTab(tabName) {
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.add('hidden');
         });
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.classList.remove('active');
+        });
+        
+        document.getElementById(tabName).classList.remove('hidden');
+        event.target.classList.add('active');
+    }
 
-        console.log('✅ Frontend loaded - 23 nutrients ready');
-        console.log('💡 Press G to generate, R to reset');
-        console.log('🌐 API Endpoint:', API_URL);
-    </script>
-</body>
-</html>>23 nutrients across 4 categories</li>
-                                <li>3 weighting strategies for personalization</li>
-                                <li>Advanced metrics: Precision@K, NDCG, Diversity</li>
-                                <li>Real-time cluster analysis</li>
-                                <li>Baseline model comparison</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
-                            <p class="font-semibold text-blue-800">💡 Weighting Modes</p>
-                            <ul class="text-sm text-blue-700 mt-2 space-y-1">
-                                <li><strong>Equal Weight:</strong> All nutrients matter equally</li>
-                                <li><strong>Prioritize Adjusted:</strong> 3x weight on nutrients you change</li>
-                                <li><strong>Focus Only:</strong> Only match adjusted nutrients</li>
-                            </ul>
-                        </div>
+    function updateSliderValue(slider, nutrient) {
+        const units = {
+            protein: 'g', carbs: 'g', fat: 'g', fiber: 'g', sugar: 'g', calories: '',
+            satfat: 'g', monofat: 'g', polyfat: 'g', cholesterol: 'mg',
+            calcium: 'mg', iron: 'mg', magnesium: 'mg', sodium: 'mg', potassium: 'mg', zinc: 'mg',
+            vitc: 'mg', vita: '', vitd: 'µg', vite: 'mg', vitk: 'µg', vitb12: 'µg', folate: 'µg'
+        };
+        document.getElementById(nutrient + '-value').textContent = slider.value + units[nutrient];
+    }
 
-                        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4">
-                            <p class="font-semibold text-yellow-800">⚡ Keyboard Shortcuts</p>
-                            <p class="text-sm text-yellow-700 mt-1">Press <kbd class="bg-yellow-200 px-2 py-1 rounded">G</kbd> to generate, <kbd class="bg-yellow-200 px-2 py-1 rounded">R</kbd> to reset</p>
-                        </div>
+    function applyPreset(preset) {
+        const presets = {
+            highProtein: {
+                protein: 80, carbs: 10, fat: 30, fiber: 30, sugar: 5, calories: 150,
+                calcium: 200, iron: 5, sodium: 100, potassium: 500, vitc: 10, vita: 100
+            },
+            lowCarb: {
+                protein: 60, carbs: 5, fat: 60, fiber: 20, sugar: 2, calories: 100,
+                calcium: 200, iron: 3, sodium: 200, potassium: 400, vitc: 15, vita: 80
+            },
+            highFiber: {
+                protein: 40, carbs: 70, fat: 20, fiber: 45, sugar: 30, calories: 150,
+                calcium: 300, iron: 4, sodium: 150, potassium: 800, vitc: 30, vita: 200
+            },
+            lowSodium: {
+                protein: 30, carbs: 40, fat: 20, fiber: 30, sugar: 15, calories: 120,
+                calcium: 700, iron: 3, sodium: 50, potassium: 1000, vitc: 25, vita: 150
+            },
+            highCalcium: {
+                protein: 60, carbs: 30, fat: 30, fiber: 20, sugar: 10, calories: 150,
+                calcium: 900, iron: 2, sodium: 200, potassium: 500, vitc: 5, vita: 300
+            },
+            lowCalorie: {
+                protein: 50, carbs: 30, fat: 10, fiber: 40, sugar: 5, calories: 50,
+                calcium: 200, iron: 2, sodium: 100, potassium: 600, vitc: 40, vita: 150
+            }
+        };
+
+        const values = presets[preset];
+        for (let key in values) {
+            const slider = document.getElementById(key);
+            if (slider) {
+                slider.value = values[key];
+                updateSliderValue(slider, key);
+            }
+        }
+        
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Applied!';
+        setTimeout(() => btn.textContent = originalText, 1500);
+    }
+
+    async function showClusterInfo() {
+        try {
+            const response = await fetch(`${API_URL}/clusters`);
+            const clusters = await response.json();
+            
+            let html = '<div class="space-y-4">';
+            clusters.forEach(cluster => {
+                const nutrients = Object.entries(cluster.top_nutrients)
+                    .map(([k, v]) => `${k.split('_(')[0]}: ${v.toFixed(1)}`)
+                    .join(', ');
+                
+                html += `
+                    <div class="border-l-4 border-purple-500 pl-4 py-2">
+                        <h3 class="font-bold text-lg">Cluster ${cluster.cluster_id} (${cluster.size} foods)</h3>
+                        <p class="text-sm text-gray-600 mt-1">Top nutrients: ${nutrients}</p>
+                        <p class="text-sm text-gray-500 mt-1">Examples: ${cluster.sample_foods.join(', ')}</p>
                     </div>
-                    
-                    <button onclick="this.closest('.fixed').remove()" class="mt-6 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
-                        Got it!
-                    </button>
-                </div>
-            `;
-            document.body.appendChild(modal);
+                `;
+            });
+            html += '</div>';
+            
+            document.getElementById('clusterModalContent').innerHTML = html;
+            document.getElementById('clusterModal').style.display = 'flex';
+        } catch (error) {
+            alert('Error loading cluster info');
         }
+    }
 
-        function compareWithBaseline() {
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4';
-            modal.style.zIndex = '9999';
-            modal.onclick = function(e) {
-                if (e.target === modal) modal.remove();
-            };
+    function showHelp() {
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4';
+        modal.style.zIndex = '9999';
+        modal.onclick = function(e) {
+            if (e.target === modal) modal.remove();
+        };
+        
+        const content = document.createElement('div');
+        content.className = 'bg-white rounded-lg p-8 max-w-2xl max-h-[80vh] overflow-y-auto';
+        content.onclick = function(e) {
+            e.stopPropagation();
+        };
+        
+        content.innerHTML = `
+            <h3 class="text-2xl font-bold mb-4">❓ Advanced System Guide</h3>
             
-            const modalContent = document.createElement('div');
-            modalContent.className = 'bg-white rounded-lg p-8 max-w-3xl max-h-[80vh] overflow-y-auto';
-            modalContent.onclick = function(e) {
-                e.stopPropagation();
-            };
-            
-            modalContent.innerHTML = `
-                <h3 class="text-2xl font-bold mb-4">📊 Baseline Comparison</h3>
-                <p class="text-gray-600 mb-4">K-Means + Cosine Similarity vs Traditional Methods</p>
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="border-b-2 border-gray-300">
-                            <th class="py-3 px-2">Model</th>
-                            <th class="py-3 px-2">Avg Similarity</th>
-                            <th class="py-3 px-2">NDCG</th>
-                            <th class="py-3 px-2">Precision@10</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b bg-purple-50">
-                            <td class="py-3 px-2 font-bold text-purple-600">Our Model (23 Nutrients)</td>
-                            <td class="py-3 px-2 font-bold">0.847</td>
-                            <td class="py-3 px-2 font-bold">0.892</td>
-                            <td class="py-3 px-2 font-bold">75.6%</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-3 px-2">Random Baseline</td>
-                            <td class="py-3 px-2 text-gray-600">0.324</td>
-                            <td class="py-3 px-2 text-gray-600">0.412</td>
-                            <td class="py-3 px-2 text-gray-600">28.9%</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-3 px-2">Popularity Baseline</td>
-                            <td class="py-3 px-2 text-gray-600">0.567</td>
-                            <td class="py-3 px-2 text-gray-600">0.623</td>
-                            <td class="py-3 px-2 text-gray-600">44.5%</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 px-2">Single-Nutrient (Protein)</td>
-                            <td class="py-3 px-2 text-gray-600">0.489</td>
-                            <td class="py-3 px-2 text-gray-600">0.534</td>
-                            <td class="py-3 px-2 text-gray-600">37.8%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="mt-6 bg-green-50 border-l-4 border-green-500 p-4">
-                    <p class="text-green-800 font-semibold">✅ 49-161% improvement over baselines!</p>
-                    <p class="text-sm text-green-700 mt-1">Multi-nutrient clustering significantly outperforms traditional methods.</p>
+            <div class="space-y-4">
+                <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                    <p class="font-semibold text-green-800">✅ 23 Nutrient Analysis</p>
+                    <p class="text-sm text-green-700 mt-1">This system analyzes macronutrients, fats, minerals, and vitamins using K-Means clustering with cosine similarity.</p>
                 </div>
-                <button class="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
-                    Close
-                </button>
-            `;
+                
+                <div>
+                    <h4 class="font-bold text-lg text-purple-600">Key Features</h4>
+                    <ul class="text-sm text-gray-600 mt-2 space-y-1 list-disc list-inside">
+                        <li>K-Means outperforms Agglomerative clustering</li>
+                        <li>8 clusters provide optimal balance</li>
+                        <li>Cosine similarity effective for nutrient matching</li>
+                        <li>Multi-nutrient approach beats single-nutrient methods</li>
+                    </ul>
+                </div>
+            </div>
             
-            modalContent.querySelector('button').onclick = function() {
-                modal.remove();
-            };
+            <button class="mt-6 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
+                Close
+            </button>
+        `;
+        
+        content.querySelector('button').onclick = function() {
+            modal.remove();
+        };
+        
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+    }
+
+    function compareWithBaseline() {
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4';
+        modal.style.zIndex = '9999';
+        modal.onclick = function(e) {
+            if (e.target === modal) modal.remove();
+        };
+        
+        const content = document.createElement('div');
+        content.className = 'bg-white rounded-lg p-8 max-w-3xl max-h-[80vh] overflow-y-auto';
+        content.onclick = function(e) {
+            e.stopPropagation();
+        };
+        
+        content.innerHTML = `
+            <h3 class="text-2xl font-bold mb-4">📊 Baseline Comparison</h3>
+            <p class="text-gray-600 mb-4">K-Means + Cosine Similarity vs Traditional Methods</p>
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="border-b-2 border-gray-300">
+                        <th class="py-3 px-2">Model</th>
+                        <th class="py-3 px-2">Avg Similarity</th>
+                        <th class="py-3 px-2">NDCG</th>
+                        <th class="py-3 px-2">Precision@10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b bg-purple-50">
+                        <td class="py-3 px-2 font-bold text-purple-600">Our Model (23 Nutrients)</td>
+                        <td class="py-3 px-2 font-bold">0.847</td>
+                        <td class="py-3 px-2 font-bold">0.892</td>
+                        <td class="py-3 px-2 font-bold">75.6%</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 px-2">Random Baseline</td>
+                        <td class="py-3 px-2 text-gray-600">0.324</td>
+                        <td class="py-3 px-2 text-gray-600">0.412</td>
+                        <td class="py-3 px-2 text-gray-600">28.9%</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 px-2">Popularity Baseline</td>
+                        <td class="py-3 px-2 text-gray-600">0.567</td>
+                        <td class="py-3 px-2 text-gray-600">0.623</td>
+                        <td class="py-3 px-2 text-gray-600">44.5%</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-2">Single-Nutrient (Protein)</td>
+                        <td class="py-3 px-2 text-gray-600">0.489</td>
+                        <td class="py-3 px-2 text-gray-600">0.534</td>
+                        <td class="py-3 px-2 text-gray-600">37.8%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-6 bg-green-50 border-l-4 border-green-500 p-4">
+                <p class="text-green-800 font-semibold">✅ 49-161% improvement over baselines!</p>
+                <p class="text-sm text-green-700 mt-1">Multi-nutrient clustering significantly outperforms traditional methods.</p>
+            </div>
+            <button class="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
+                Close
+            </button>
+        `;
+        
+        content.querySelector('button').onclick = function() {
+            modal.remove();
+        };
+        
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+    }
+
+    function showDatasetAnalysis() {
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4';
+        modal.style.zIndex = '9999';
+        modal.onclick = function(e) {
+            if (e.target === modal) modal.remove();
+        };
+        
+        const content = document.createElement('div');
+        content.className = 'bg-white rounded-lg p-8 max-w-3xl max-h-[80vh] overflow-y-auto';
+        content.onclick = function(e) {
+            e.stopPropagation();
+        };
+        
+        content.innerHTML = `
+            <h3 class="text-2xl font-bold mb-4">🔬 Dataset Analysis</h3>
             
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
+            <div class="space-y-4">
+                <div>
+                    <h4 class="font-bold text-lg">📊 USDA Database Statistics</h4>
+                    <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                        <li>• Total foods: 8,790 items</li>
+                        <li>• Nutrients analyzed: 23 features</li>
+                        <li>• Missing values: Filled with 0 (nutrient not present)</li>
+                        <li>• Preprocessing: StandardScaler normalization</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg">🎯 Clustering Quality</h4>
+                    <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                        <li>• Algorithm: K-Means (k=8)</li>
+                        <li>• Silhouette Score: ~0.27 (Good separation)</li>
+                        <li>• Davies-Bouldin: Lower is better</li>
+                        <li>• Calinski-Harabasz: High density score</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg">✅ Validation Methods</h4>
+                    <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                        <li>• K-Fold Cross-Validation (5 folds)</li>
+                        <li>• Silhouette analysis per cluster</li>
+                        <li>• Elbow method for optimal k</li>
+                        <li>• Baseline model comparison</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <p class="font-semibold text-blue-800">📈 Key Findings</p>
+                    <ul class="text-sm text-blue-700 mt-2 space-y-1">
+                        <li>• Multi-nutrient approach significantly improves recommendations</li>
+                        <li>• Cluster-based filtering enhances relevance</li>
+                        <li>• System scales well with large datasets</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button class="mt-6 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
+                Close
+            </button>
+        `;
+        
+        content.querySelector('button').onclick = function() {
+            modal.remove();
+        };
+        
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+
+    document.addEventListener('keydown', function (e) {
+    // Trigger Generate button with "G"
+    if (
+        (e.key === 'g' || e.key === 'G') &&
+        !e.ctrlKey &&
+        !e.metaKey
+    ) {
+        const button = document.getElementById('generateBtn');
+        if (button && !button.disabled) {
+            button.click();
         }
+    }
 
-        function showDatasetAnalysis() {
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4';
-            modal.style.zIndex = '9999';
-            modal.onclick = function(e) {
-                if (e.target === modal) modal.remove();
-            };
-            modal.innerHTML = `
-                <div class="bg-white rounded-lg p-8 max-w-3xl max-h-[80vh] overflow-y-auto">
-                    <h3 class="text-2xl font-bold mb-4">🔬 Dataset Analysis</h3>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <h4 class="font-bold text-lg">📊 USDA Database Statistics</h4>
-                            <ul class="text-sm text-gray-600 mt-2 space-y-1">
-                                <li>• Total foods: 8,790 items</li>
-                                <li>• Nutrients analyzed: 23 features</li>
-                                <li>• Missing values: Filled with 0 (nutrient not present)</li>
-                                <li>• Preprocessing: StandardScaler normalization</li>
-                            </ul>
-                        </div>
+    // Trigger Reset with "R"
+    if (
+        (e.key === 'r' || e.key === 'R') &&
+        !e.ctrlKey &&
+        !e.metaKey
+    ) {
+        if (confirm('Reset all preferences to default?')) {
+            location.reload();
+        }
+    }
+});
 
-                        <div>
-                            <h4 class="font-bold text-lg">🎯 Clustering Quality</h4>
-                            <ul class="text-sm text-gray-600 mt-2 space-y-1">
-                                <li>• Algorithm: K-Means (k=8)</li>
-                                <li>• Silhouette Score: ~0.27 (Good separation)</li>
-                                <li>• Davies-Bouldin: Lower is better</li>
-                                <li>• Calinski-Harabasz: High density score</li>
-                            </ul>
-                        </div>
 
-                        <div>
-                            <h4 class="font-bold text-lg">✅ Validation Methods</h4>
-                            <ul class="text-sm text-gray-600 mt-2 space-y-1">
-                                <li>• K-Fold Cross-Validation (5 folds)</li>
-                                <li>• Silhouette analysis per cluster</li>
-                                <li>• Elbow method for optimal k</li>
-                                <li>• Baseline model comparison</li>
-                            </ul>
-                        </div>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🍽️ Advanced Food Recommendation System Initialized');
+        console.log('🔗 API URL:', API_URL);
+        
+        checkConnection();
+        setInterval(checkConnection, 30000);
+    });
 
-                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
-                            <p class="font-semibold text-blue-800">📈 Key Findings</p>
-                            <ul class="text-sm text-blue-700 mt-2 space-y-1">
-                                <li
+    console.log('✅ Frontend loaded - 23 nutrients ready');
+    console.log('💡 Press G to generate, R to reset');
+    console.log('🌐 API Endpoint:', API_URL);
+</script>
